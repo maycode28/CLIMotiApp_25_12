@@ -42,13 +42,44 @@ public class MotivationController {
         }
         for (int i = motivations.size() - 1; i >= 0; i--) {
             Motivation motivation = motivations.get(i);
-
-            if (motivation.getSource().length() > 7) {
-                System.out.printf("   %d     /    %s   /    %s   \n", motivation.getId(), motivation.getSource().substring(0, 7) + "...", motivation.getBody());
-                continue;
+            if (motivation.getIsActive()){
+                if (motivation.getSource().length() > 7) {
+                    System.out.printf("   %d     /    %s   /    %s   \n", motivation.getId(), motivation.getSource().substring(0, 7) + "...", motivation.getBody());
+                    continue;
+                }
+                System.out.printf("   %d     /    %s     /    %s   \n", motivation.getId(), motivation.getSource(), motivation.getBody());
             }
-            System.out.printf("   %d     /    %s     /    %s   \n", motivation.getId(), motivation.getSource(), motivation.getBody());
         }
         System.out.println("=".repeat(40));
+    }
+    public void delete(int id) {
+        if (motivations.size() < id) {
+            System.out.printf("%d번 motivation은 존재하지 않습니다.\n", id);
+            return;
+        }
+        if (motivations.get(id-1).getIsActive()) {
+            motivations.get(id-1).setIsActive(false);
+            System.out.printf("%d번 motivation이 삭제되었습니다.\n", id);
+        }
+        else {
+            System.out.printf("%d번 motivation은 존재하지 않습니다.\n", id);
+        }
+    }
+    public  void edit(int id) {
+        if (motivations.size() < id) {
+            System.out.printf("%d번 motivation은 존재하지 않습니다.\n", id);
+            return;
+        }
+        if (motivations.get(id-1).getIsActive()) {
+            System.out.print("body : ");
+            String body = sc.nextLine();
+            System.out.print("source : ");
+            String source = sc.nextLine();
+            motivations.get(id-1).setBody(body);
+            motivations.get(id-1).setSource(source);
+        }
+        else {
+            System.out.printf("%d번 motivation은 존재하지 않습니다.\n", id);
+        }
     }
 }

@@ -4,6 +4,7 @@ public class Motivation {
     private int id;
     private String body;
     private String source;
+    private boolean isActive;
 
     public int getId() {
         return id;
@@ -28,11 +29,18 @@ public class Motivation {
     public void setSource(String source) {
         this.source = source;
     }
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+    public boolean getIsActive() {
+        return isActive;
+    }
 
     public Motivation(int id, String body, String source) {
         this.id = id;
         this.body = body;
         this.source = source;
+        this.isActive = true;
     }
 
     @Override

@@ -35,6 +35,12 @@ public class App {
                 motivationController.add();
             } else if (cmd.equals("list")) {
                 motivationController.list();
+            }else if (cmd.contains("del")) {
+                int id = Integer.parseInt(cmd.substring(4));
+                motivationController.delete(id);
+            } else if (cmd.contains("edit")) {
+                int id = Integer.parseInt(cmd.substring(5));
+                motivationController.edit(id);
             } else {
                 System.out.println("사용할 수 없는 명령어야");
             }
