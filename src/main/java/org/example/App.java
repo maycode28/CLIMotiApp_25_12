@@ -35,10 +35,10 @@ public class App {
                 motivationController.add();
             } else if (cmd.equals("list")) {
                 motivationController.list();
-            }else if (cmd.contains("del")) {
+            }else if (cmd.startsWith("del")) {
                 int id = Integer.parseInt(cmd.substring(4));
                 motivationController.delete(id);
-            } else if (cmd.contains("edit")) {
+            } else if (cmd.startsWith("edit")) {
                 int id = Integer.parseInt(cmd.substring(5));
                 motivationController.edit(id);
             } else {
